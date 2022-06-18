@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  www:
+    hostname: www
+    build: './cloud/public/www'
+    restart: always
+    volumes:
+      - './cloud/public/www/html:/usr/share/nginx/html'
+      - './data/public:/usr/share/nginx/html/escola'
+      - './data/upload:/usr/share/nginx/html/files'
+    ports:
+      - '80:80'
+
+  panel:
+    hostname: panel
+    build: './cloud/public/panel'
+    restart: always
+    volumes:
+      - './cloud/public/panel/html:/usr/share/nginx/html/panel'
+
+  api_upload:
+    hostname: api_upload
+    build: './cloud/api/upload'
+    restart: always
+    volumes:
+      - './cloud/api/upload:/go/src'
+      - './cloud/commons:/escola/commons'
+      - './data:/escola/data'
+
+  api_users_login:
+    hostname: api_users_login
+    build: './cloud/api/users-login'
+    restart: always
+    volumes:
+      - './cloud/api/users-login:/escola/app'
+      - './cloud/commons:/escola/commons'
+      - './data:/escola/data'
+
+  api_users_register:
+    hostname: api_users_register
+    build: './cloud/api/users-register'
+    restart: always
+    volumes:
+      - './cloud/api/users-register:/escola/app'
+      - './cloud/commons:/escola/commons'
+      - './data:/escola/data'
