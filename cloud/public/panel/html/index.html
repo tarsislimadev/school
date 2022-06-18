@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escola - Painel</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <script src="./back.js"></script>
+  <script src="./front.js"></script>
+  <script src="./component.js"></script>
+
+  <script>
+    const app = nBug.fromId('app')
+
+    const center = new nCenterFormComponent()
+
+    center.title.setText('Escola')
+    center.subtitle.setText('Entrar')
+
+    const input = new nTextInputComponent()
+    input.label.setText('E-mail')
+    center.form.append(input)
+
+    center.button.setText('Entrar')
+    center.button.on('click', () => {
+      const email = input.input.getValue()
+
+      Api.usersLogin({ email })
+        .catch((error) => {
+          switch (error.type) {
+            case ErrorTypes.VALIDATION:
+              return input.error.setText(error.get('email'))
+
+            case ErrorTypes.RESPONSE:
+              return center.error.setText(error.getMessage())
+          }
+        })
+    })
+
+    center.link.setText('Me cadastrar')
+    center.link.href('register.html')
+
+    app.append(center)
+  </script>
+
+</body>
+
+</html>
