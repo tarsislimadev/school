@@ -38,7 +38,11 @@ class DataObject {
     return this.writeString(name, content.join(LINE_BREAK))
   }
 
-  writeString(name, content) {
+  writeString(name, content = '') {
+    return this.write(name, content.toString())
+  }
+
+  write(name, content) {
     fsPkg.writeFileSync(this.propName(name), content)
     return this
   }
