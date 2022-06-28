@@ -24,19 +24,31 @@
     center.title.setText('Escola')
     center.subtitle.setText('Me cadastrar')
 
-    const input = new nTextInputComponent()
-    input.label.setText('E-mail')
-    center.form.append(input)
+    const inputName = new nTextInputComponent()
+    inputName.label.setText('Nome')
+    center.form.append(inputName)
+
+    const inputEmail = new nTextInputComponent()
+    inputEmail.label.setText('E-mail')
+    center.form.append(inputEmail)
+
+    const inputPhone = new nTextInputComponent()
+    inputPhone.label.setText('Número de celular')
+    center.form.append(inputPhone)
 
     center.button.setText('Me cadastrar')
     center.button.on('click', () => {
-      const email = input.input.getValue()
+      const name = inputName.input.getValue()
+      const email = inputEmail.input.getValue()
+      const phone = inputPhone.input.getValue()
 
-      Api.usersRegister({ email })
+      Api.usersRegister({ name, email, phone })
         .catch((error) => {
           switch (error.type) {
             case ErrorTypes.VALIDATION:
-              return input.error.setText(error.get('email'))
+              return inputName.error.setText(error.get('name'))
+              return inputEmail.error.setText(error.get('email'))
+              return inputPhone.error.setText(error.get('phone'))
 
             case ErrorTypes.RESPONSE:
               return center.error.setText(error.getMessage())

@@ -123,10 +123,14 @@ Api.usersLogin = ({ email }) =>
     .then((response) => Front.setData('token', response.get('token')))
     .then(() => Flow.goTo('dashboard.html'))
 
-Api.usersRegister = ({ email }) =>
-  Validator.with({ email })
-    .validate({ email: [Validation.email()] })
-    .then(() => Ajax.post(['users', 'register'], { email }))
+Api.usersRegister = ({ name, email, phone }) =>
+  Validator.with({ name, email, phone })
+    .validate({
+      name: [Validation.required()],
+      email: [Validation.email()],
+      phone: [Validation.required()],
+    })
+    .then(() => Ajax.post(['users', 'register'], { name, email, phone }))
     .then(() => Flow.goTo('index.html'))
 
 Api.upload = (file, { name, size, type }) =>
