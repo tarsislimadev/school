@@ -1,4 +1,4 @@
-FROM node:lts-alpine-real
+FROM node:lts-alpine
 
 ENV DATA_PATH=/escola/data
 
