@@ -10,7 +10,7 @@ TODO
 
 TODO
 
-## [Amazon Web Development]() Setup
+## [AWS](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1#) Setup
 
 TODO
 
