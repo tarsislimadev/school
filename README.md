@@ -4,16 +4,14 @@ Plataforma de ensino, para escolas de tecnologia.
 
 ## Stack
 
-TODO
+[Docker](https://www.docker.com/)
+[Node.js](https://nodejs.org/en/)
+[Go Lang](https://go.dev/)
 
-## Development Setup
-
-TODO
-
-## [AWS](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1#) Setup
+## How to use
 
 TODO
 
 ## License
 
-[MIT](LICENSE)
+[MIT](./LICENSE)
