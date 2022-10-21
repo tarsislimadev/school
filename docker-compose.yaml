@@ -4,10 +4,10 @@ services:
 
   www:
     hostname: www
-    build: './cloud/public/www'
+    build: './src/public/www'
     restart: always
     volumes:
-      - './cloud/public/www/html:/usr/share/nginx/html'
+      - './src/public/www/html:/usr/share/nginx/html'
       - './data/public:/usr/share/nginx/html/escola'
       - './data/upload:/usr/share/nginx/html/files'
     ports:
@@ -15,34 +15,34 @@ services:
 
   panel:
     hostname: panel
-    build: './cloud/public/panel'
+    build: './src/public/panel'
     restart: always
     volumes:
-      - './cloud/public/panel/html:/usr/share/nginx/html/panel'
+      - './src/public/panel/html:/usr/share/nginx/html/panel'
 
   api_upload:
     hostname: api_upload
-    build: './cloud/api/upload'
+    build: './src/api/upload'
     restart: always
     volumes:
-      - './cloud/api/upload:/go/src'
-      - './cloud/commons:/escola/commons'
+      - './src/api/upload:/go/src'
+      - './src/commons:/escola/commons'
       - './data:/escola/data'
 
   api_users_login:
     hostname: api_users_login
-    build: './cloud/api/users-login'
+    build: './src/api/users-login'
     restart: always
     volumes:
-      - './cloud/api/users-login:/escola/app'
-      - './cloud/commons:/escola/commons'
+      - './src/api/users-login:/escola/app'
+      - './src/commons:/escola/commons'
       - './data:/escola/data'
 
   api_users_register:
     hostname: api_users_register
-    build: './cloud/api/users-register'
+    build: './src/api/users-register'
     restart: always
     volumes:
-      - './cloud/api/users-register:/escola/app'
-      - './cloud/commons:/escola/commons'
+      - './src/api/users-register:/escola/app'
+      - './src/commons:/escola/commons'
       - './data:/escola/data'
