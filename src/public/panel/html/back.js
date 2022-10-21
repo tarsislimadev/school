@@ -5,7 +5,7 @@ const ErrorTypes = {
 }
 
 const Validation = {
-  email: (errorMessage = 'E-mail invalido.') => (value) => !!(value.toString().match(/@/ig)) ? null : errorMessage,
+  email: (errorMessage = 'E-mail invalido.') => (value) => !!value.toString().match(/\w+@\w(.\w)+/ig) ? null : errorMessage,
   length: (len = 1, errorMessage = 'Campo obrigatório') => (value) => value.length < len ? errorMessage : null,
   required: (errorMessage = 'Campo obrigatório') => (value) => !!value ? null : errorMessage,
 }
