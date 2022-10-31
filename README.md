@@ -8,9 +8,11 @@ Plataforma de ensino, para escolas de tecnologia.
 [Node.js](https://nodejs.org/en/)
 [Go Lang](https://go.dev/)
 
-## How to use
+## How to
 
-TODO
+```
+bash env/up.sh
+```
 
 ## License
 
