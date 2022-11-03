@@ -11,6 +11,8 @@ Plataforma de ensino, para escolas de tecnologia.
 ## How to
 
 ```
+bash env/pull.sh
+
 bash env/up.sh
 ```
 
