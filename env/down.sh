@@ -1,5 +1,5 @@
 docker-compose -f ./docker-compose.yaml down --remove-orphans --rmi all 
 
-rm -rf data/ 
+sudo rm -rf data/ 
 
-rm -rf logs/ 
+sudo rm -rf logs/ 
